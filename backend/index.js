@@ -7,7 +7,7 @@ server.use(express.json());
 
 
 // BLOCO DAS --TRANSAÇÕES--:
-server.get('/mongo/transacoes', async (req,res) => {
+server.get('/mongo/transacoes', async ( req, res ) => {
     try {
         const db = await mongo();
         const transactions = await db.collection('transacoes').find({}).toArray()
