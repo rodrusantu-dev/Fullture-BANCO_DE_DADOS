@@ -1,14 +1,19 @@
 # Fullture-BANCO_DE_DADOS
- Módulo de Banco de dados noSQL da Fullture usando MongoDB
-no banco de dados mongoBD
+Módulo de Banco de dados noSQL da Fullture usando MongoDB
 
-# para criar 
-uso do USE para acessar e criar banco de dados
-uso do DB.CREATECOLLECTION('nomedacolecction')
+## Para criar uma novo BANCO ou COLLECTION: 
+uso do **USE** para acessar e criar banco de dados.
+Acessar se ele já existir ou criar um novo caso ainda não exista.
 
-use <database>: seleciona um banco de dados para trabalhar.
-show database: exibe uma lista de todos os bancos de dados.
-show collections: exibe uma lista de todos os bancos de dados.
++ `use Supermercado`
+* `use Alunos`
+
+Podemos criar também a collection via prompt:
++ `db.notas`
+
++ `use database`: seleciona um banco de dados para trabalhar.
++ `show database`: exibe uma lista de todos os bancos de dados.
++ `show collections`: exibe uma lista de todos os bancos de dados.
 
 db.collection.insertOne(): insere um documento em uma coleção.
 db.collection.find(): retorna documentos de uma coleção que correspondem a um critério de consulta.
