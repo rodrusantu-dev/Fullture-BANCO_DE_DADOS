@@ -8,48 +8,43 @@ Acessar se ele já existir ou criar um novo caso ainda não exista.
 + `use Supermercado`
 * `use Alunos`
 
-Podemos criar também a collection via prompt:
+### Podemos criar também a collection via prompt:
 + `db.notas`
-
 + `use database`: seleciona um banco de dados para trabalhar.
 + `show database`: exibe uma lista de todos os bancos de dados.
 + `show collections`: exibe uma lista de todos os bancos de dados.
++ `db.collection.insertOne()`: insere um documento em uma coleção.
++ `db.collection.find()`: retorna documentos de uma coleção que correspondem a um critério de consulta.
++ `db.collection.updateOne()`: atualiza um documento em uma coleção.
++ `db.collection.deleteOne()`: remove um documento de uma coleção.
++ `db.collection.aggregate()`: realiza uma operação de agregação em uma coleção.
++ `db.collection.createIndex()`: cria um índice em uma coleção para otimizar a consulta.
++ `db.nomedacollection.drop()`: exclui uma collection, e retorna true
++ `db.dropDatabase()`: exclui a data base que voce estiver
 
-db.collection.insertOne(): insere um documento em uma coleção.
-db.collection.find(): retorna documentos de uma coleção que correspondem a um critério de consulta.
+>Exemplo: Trocar o titulo para "Meu primeiro update"
+`db.books.updateOne({ _id: 20}, { $set: {title: 'Meu primeiro update'} })`
 
-db.collection.updateOne(): atualiza um documento em uma coleção.
+> Exemplo: Para limpar a tela do MongoSH (Promt do Mongo)
+`cls`
 
-Exemplo: Trocar o titulo para "Meu primeiro update"
-db.books.updateOne({ _id: 20}, { $set: {title: 'Meu primeiro update'} })
+## Fazendo pesquisa no Banco de Dados
 
-> db.collection.deleteOne(): remove um documento de uma coleção.
-> db.collection.aggregate(): realiza uma operação de agregação em uma coleção.
-db.collection.createIndex(): cria um índice em uma coleção para otimizar a consulta.
-db.nomedacollection.drop(): exclui uma collection, e retorna true
-db.dropDatabase(): exclui a data base que voce estiver
+Para fazer uma busca de uma variação, neste caso os carros dos anos 2000 e 2010 (rodou normal a busca pelo terminal do mongoSH):
 
+`db.collection.find({ ano: {$in:[2000,2010]}  })`
 
-cls: limpa a tela do código 
-
-FAZENDO PESQUISA NO BANCO DE DADOS
-
-para fazer uma busca de uma variação, neste caso os carros dos anos 2000 e 2010
-rodou normal a busca pelo terminal do mongoSH:
-
-db.collection.find({ ano: {$in:[2000,2010]}  })
-
-pesquisa normal um operador ou elemento específico
-db.collection.find({ ano: 2010 })
+Pesquisa normal um operador ou elemento específico
+`db.collection.find({ ano: 2010 })`
 
 O COMANDO $GT busca os valores MAIORES que....., CONFORME MODELO ABAIXO:
-db.collection.find({ kmRodado: {$gt:100000} })
+`db.collection.find({ kmRodado: {$gt:100000} })`
 
 O COMANDO $GT busca os valores MENOR OU IGUAL que....., CONFORME MODELO ABAIXO:
-db.collection.find({ kmRodado: {$lte:100000} })
+`db.collection.find({ kmRodado: {$lte:100000} })`
 
 TEM UM OUTRO COMANDO TAMBÉM para BUSCAR DOIS PARAMETROS:
-db.books.find({category: "java", pages: {$gt: 100}})
+`db.books.find({category: "java", pages: {$gt: 100}})`
 
 
 # OPERADORES
