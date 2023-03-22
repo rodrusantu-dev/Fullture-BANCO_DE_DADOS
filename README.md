@@ -22,43 +22,42 @@ Acessar se ele já existir ou criar um novo caso ainda não exista.
 + `db.nomedacollection.drop()`: exclui uma collection, e retorna true
 + `db.dropDatabase()`: exclui a data base que voce estiver
 
->Exemplo: Trocar o titulo para "Meu primeiro update"
-`db.books.updateOne({ _id: 20}, { $set: {title: 'Meu primeiro update'} })`
+**Exemplo: Trocar o titulo para "Meu primeiro update"**
++ `db.books.updateOne({ _id: 20}, { $set: {title: 'Meu primeiro update'} })`
 
-> Exemplo: Para limpar a tela do MongoSH (Promt do Mongo)
-`cls`
+**Exemplo: Para limpar a tela do MongoSH (Promt do Mongo)**
++ `cls`
 
 ## Fazendo pesquisa no Banco de Dados
 
 Para fazer uma busca de uma variação, neste caso os carros dos anos 2000 e 2010 (rodou normal a busca pelo terminal do mongoSH):
-
-`db.collection.find({ ano: {$in:[2000,2010]}  })`
++ `db.collection.find({ ano: {$in:[2000,2010]}  })`
 
 Pesquisa normal um operador ou elemento específico
-`db.collection.find({ ano: 2010 })`
++ `db.collection.find({ ano: 2010 })`
 
 O COMANDO $GT busca os valores MAIORES que....., CONFORME MODELO ABAIXO:
-`db.collection.find({ kmRodado: {$gt:100000} })`
++ `db.collection.find({ kmRodado: {$gt:100000} })`
 
 O COMANDO $GT busca os valores MENOR OU IGUAL que....., CONFORME MODELO ABAIXO:
-`db.collection.find({ kmRodado: {$lte:100000} })`
++ `db.collection.find({ kmRodado: {$lte:100000} })`
 
-TEM UM OUTRO COMANDO TAMBÉM para BUSCAR DOIS PARAMETROS:
-`db.books.find({category: "java", pages: {$gt: 100}})`
+àra fazer a busca de dois parâmetros ao mesmo tempo:
++ `db.books.find({category: "java", pages: {$gt: 100}})`
 
 
 # OPERADORES
 
 ## TRAZ A QUANTIDADE EM NUMEROS DAQUELA OCORRÊNCIA
-> db.collection.find({name: "John", age: {$gt: 30}}).count()
++ `db.collection.find({name: "John", age: {$gt: 30}}).count()`
 
 
 ## INFORMAÇÕES SOBRE O DESEMPENHO DA CONSULTA
-> db.collection.find({name: "John", age: {$gt: 30}}).explain()
++ `db.collection.find({name: "John", age: {$gt: 30}}).explain()`
 
 
 ## MESMA CONSULTA PORÉM MAIS RESUMIDA:
-```db.collection.find({name: "John", age: {$gt: 30}}).explain("executionStats") ```
++ `db.collection.find({name: "John", age: {$gt: 30}}).explain("executionStats")`
 
 
 queryPlanner: fornece informações sobre como o MongoDB planejou a consulta, incluindo o filtro aplicado, o índice utilizado (se houver), o plano de consulta vencedor e planos de consulta rejeitados (se houver).
