@@ -9,18 +9,33 @@ Acessar se ele já existir ou criar um novo caso ainda não exista.
 * `use Alunos`
 
 ### Podemos criar também a collection via prompt:
+
+#### Parte 1
 + `db.notas`
 + `use database`: seleciona um banco de dados para trabalhar.
 + `show database`: exibe uma lista de todos os bancos de dados.
 + `show collections`: exibe uma lista de todos os bancos de dados.
+#### Parte 2
 + `db.collection.insertOne()`: insere um documento em uma coleção.
 + `db.collection.find()`: retorna documentos de uma coleção que correspondem a um critério de consulta.
 + `db.collection.updateOne()`: atualiza um documento em uma coleção.
+#### Parte 3
 + `db.collection.deleteOne()`: remove um documento de uma coleção.
-+ `db.collection.aggregate()`: realiza uma operação de agregação em uma coleção.
-+ `db.collection.createIndex()`: cria um índice em uma coleção para otimizar a consulta.
 + `db.nomedacollection.drop()`: exclui uma collection, e retorna true
 + `db.dropDatabase()`: exclui a data base que voce estiver
+#### Parte 4
++ `db.collection.aggregate()`: realiza uma operação de agregação em uma coleção.
+
+### Parte 5
+Criação de um índice, o número 1 é de Ligado e 0 de Desligado.
++ `db.collection.createIndex({ atributo:1 })`:
+> Depois disso o mongo cria esse índice com o nome do atributo_1
+> Ai fazemos uma busca:
+`db.collection.find({ nomeAtributo: 'o tipo conforme banco de dados'}).explain()`
+> Ele vai devolver a consulta com informações do índice genérico que é dos ID e informar 
+> Se o novo índice ganhou no caso de performance
+
+### Parte 6
 
 **Exemplo: Trocar o titulo para "Meu primeiro update"**
 + `db.books.updateOne({ _id: 20}, { $set: {title: 'Meu primeiro update'} })`
@@ -46,27 +61,27 @@ O COMANDO $GT busca os valores MENOR OU IGUAL que....., CONFORME MODELO ABAIXO:
 + `db.books.find({category: "java", pages: {$gt: 100}})`
 
 
-# OPERADORES
+## OPERADORES
 
-## TRAZ A QUANTIDADE EM NUMEROS DAQUELA OCORRÊNCIA
+### TRAZ A QUANTIDADE EM NUMEROS DAQUELA OCORRÊNCIA
 + `db.collection.find({name: "John", age: {$gt: 30}}).count()`
 
 
-## INFORMAÇÕES SOBRE O DESEMPENHO DA CONSULTA
+### INFORMAÇÕES SOBRE O DESEMPENHO DA CONSULTA
 + `db.collection.find({name: "John", age: {$gt: 30}}).explain()`
 
 
-## MESMA CONSULTA PORÉM MAIS RESUMIDA:
+### MESMA CONSULTA PORÉM MAIS RESUMIDA:
 + `db.collection.find({name: "John", age: {$gt: 30}}).explain("executionStats")`
 
 
-queryPlanner: fornece informações sobre como o MongoDB planejou a consulta, incluindo o filtro aplicado, o índice utilizado (se houver), o plano de consulta vencedor e planos de consulta rejeitados (se houver).
+**queryPlanner:** fornece informações sobre como o MongoDB planejou a consulta, incluindo o filtro aplicado, o índice utilizado (se houver), o plano de consulta vencedor e planos de consulta rejeitados (se houver).
 
-executionStats: fornece informações sobre o desempenho da operação, incluindo o número de documentos retornados, o tempo de execução em milissegundos e o número total de documentos e chaves examinados durante a consulta.
+**executionStats:** fornece informações sobre o desempenho da operação, incluindo o número de documentos retornados, o tempo de execução em milissegundos e o número total de documentos e chaves examinados durante a consulta.
 
-command: fornece informações sobre a operação realizada, incluindo a coleção e o filtro aplicado.
+**command:** fornece informações sobre a operação realizada, incluindo a coleção e o filtro aplicado.
 
-serverInfo e serverParameters: fornece informações sobre a instância do MongoDB em que a operação foi executada.
+**serverInfo e serverParameters:** fornece informações sobre a instância do MongoDB em que a operação foi executada.
 
 DETALHADOS DO EXECUTION STATS:
 executionSuccess: um valor booleano que indica se a consulta foi executada com sucesso ou não.
